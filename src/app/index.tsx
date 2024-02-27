@@ -1,11 +1,15 @@
-import Home from "@/components/pages/Home"
-import Provider from "./providers"
+import Home from "@/components/pages/Home";
+import Provider from "./providers";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
 
   return (
     <Provider>
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Provider>
   )
 }

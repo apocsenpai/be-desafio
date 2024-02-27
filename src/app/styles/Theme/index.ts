@@ -1,5 +1,5 @@
 export const Theme = {
-  color: {
+  colors: {
     background: {
       gradientPrimary: 'linear-gradient(180deg, #5A84C0 0%, #594ED2 100%)',
       white: '#FFFFFF',
