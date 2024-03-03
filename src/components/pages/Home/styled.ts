@@ -1,4 +1,11 @@
 import styled from 'styled-components';
+interface ITableRowProps {
+  $header?: boolean;
+}
+
+interface IImageWrapper {
+  $image: string;
+}
 
 export const Header = styled.header`
   width: 100%;
@@ -15,13 +22,16 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: ${({ theme }) => theme.spacing.medium['60']}
     ${({ theme }) => theme.spacing.medium['32']}
     ${({ theme }) => theme.spacing.medium['80']};
 `;
 
 export const SearchContainer = styled.header`
-  width: 100%;
+  width: min(100%, 1440px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +58,7 @@ export const InputGroup = styled.div`
     background-color: ${({ theme }) => theme.colors.background.white};
     font-size: ${({ theme }) => theme.spacing.regular['16']};
 
-    &::placeholder{
+    &::placeholder {
       color: ${({ theme }) => theme.colors['gray-20']};
     }
 
@@ -68,4 +78,41 @@ export const InputGroup = styled.div`
     color: ${({ theme }) => theme.colors['gray-20']};
     align-self: center;
   }
+`;
+
+export const Table = styled.ul`
+  width: min(100%, 1440px);
+`;
+
+export const TableRow = styled.li<ITableRowProps>`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+
+  height: ${({ theme }) => theme.spacing.medium['48']};
+  box-shadow: ${({ theme }) => theme.shadow['sm']};
+  padding: 0 ${({ theme }) => theme.spacing.medium['32']};
+
+  ${({ $header, theme }) =>
+    $header &&
+    ` font-weight: 500;
+  color: ${theme.colors.white};
+  background: ${theme.colors.background.gradientPrimary};
+  border-top-right-radius: ${theme.spacing.little['08']};
+  border-top-left-radius: ${theme.spacing.little['08']};`}
+`;
+
+export const ImageWrapper = styled.div<IImageWrapper>`
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+
+  background-image: url(${({ $image }) => $image});
+  background-size: cover;
+  background-position: center;
 `;

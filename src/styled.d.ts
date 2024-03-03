@@ -21,6 +21,7 @@ declare module 'styled-components' {
         medium: {
           '80': string,
           '60': string,
+          '48': string,
           '40': string,
           '32': string,
         },

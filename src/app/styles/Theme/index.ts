@@ -18,6 +18,7 @@ export const Theme = {
     medium: {
       '80': '80px',
       '60': '60px',
+      '48': '48px',
       '40': '40px',
       '32': '32px',
     },
