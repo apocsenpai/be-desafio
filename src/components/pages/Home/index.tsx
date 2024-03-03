@@ -4,11 +4,26 @@ import { Header, ImageWrapper, InputGroup, Main, SearchContainer, Table, TableRo
 import { MdOutlineSearch } from "react-icons/md";
 
 import Logo from "@/assets/logo.png"
-import Man from "@/assets/man.png"
+
+import { useEffect, useState } from "react";
+import { IEmployeesResponseData } from "@/interfaces/employes";
+import employeesService from "@/services/employees";
 
 const Home = () => {
 
-    
+    const [data, setData] = useState<IEmployeesResponseData[]>([]);
+
+    useEffect(() => {
+
+        async function getAllEmployees() {
+            console.log(await employeesService.getAll())
+
+            setData((await employeesService.getAll()).data as IEmployeesResponseData[])
+        }
+
+        getAllEmployees();
+    }, [])
+
 
     return <>
         {/* Header */}
@@ -37,13 +52,15 @@ const Home = () => {
                     <h2>DATA DE ADMISSÃO</h2>
                     <h2>TELEFONE</h2>
                 </TableRow>
-                <TableRow>
-                    <ImageWrapper $image={Man} />
-                    <span>Giovana L. Arruda</span>
-                    <span>Front-end</span>
-                    <span>00/00/0000</span>
-                    <span>+55 (55) 55555-555</span>
-                </TableRow>
+                {data.length !== 0 && (data.map(({ id, name, job, phone, image, admission_date }) =>
+                    <TableRow key={id}>
+                        <ImageWrapper $image={image} />
+                        <span>{name}</span>
+                        <span>{job}</span>
+                        <span>{admission_date}</span>
+                        <span>{phone}</span>
+                    </TableRow>))}
+
             </Table>
         </Main>
     </>
