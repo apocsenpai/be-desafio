@@ -8,16 +8,14 @@ import Logo from "@/assets/logo.png"
 import { useEffect, useState } from "react";
 import { IEmployeesResponseData } from "@/interfaces/employes";
 import employeesService from "@/services/employees";
+import { transformDateIsoStringToBrazilianDate } from "@/utils"
 
 const Home = () => {
 
     const [data, setData] = useState<IEmployeesResponseData[]>([]);
 
     useEffect(() => {
-
         async function getAllEmployees() {
-            console.log(await employeesService.getAll())
-
             setData((await employeesService.getAll()).data as IEmployeesResponseData[])
         }
 
@@ -57,7 +55,7 @@ const Home = () => {
                         <ImageWrapper $image={image} />
                         <span>{name}</span>
                         <span>{job}</span>
-                        <span>{admission_date}</span>
+                        <span>{transformDateIsoStringToBrazilianDate(admission_date)}</span>
                         <span>{phone}</span>
                     </TableRow>))}
 
