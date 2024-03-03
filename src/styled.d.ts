@@ -26,6 +26,7 @@ declare module 'styled-components' {
         },
         regular: {
           '28': string,
+          '24': string,
           '20': string,
           '16': string,
         },

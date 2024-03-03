@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Header } from "./styled";
+import { Header, InputGroup, Main, SearchContainer } from "./styled";
 
 import Logo from "@/assets/logo.png"
+import { MdOutlineSearch } from "react-icons/md";
 
 const Home = () => {
     return <>
@@ -11,6 +12,15 @@ const Home = () => {
         </Header>
 
         {/* Search Bar */}
+        <Main>
+            <SearchContainer>
+                <h1>Funcionários</h1>
+                <InputGroup>
+                    <input placeholder="Pesquisar" />
+                    <MdOutlineSearch/>
+                </InputGroup>
+            </SearchContainer>
+        </Main>
     </>
 }
 

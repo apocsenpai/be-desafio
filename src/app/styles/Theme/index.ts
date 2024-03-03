@@ -23,6 +23,7 @@ export const Theme = {
     },
     regular: {
       '28': '28px',
+      '24': '24px',
       '20': '20px',
       '16': '16px',
     },
