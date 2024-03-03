@@ -8,7 +8,7 @@ import Logo from "@/assets/logo.png"
 import { useEffect, useState } from "react";
 import { IEmployeesResponseData } from "@/interfaces/employes";
 import employeesService from "@/services/employees";
-import { transformDateIsoStringToBrazilianDate } from "@/utils"
+import { transformDateIsoStringToBrazilianDate, transformToPhoneFormat } from "@/utils"
 
 const Home = () => {
 
@@ -56,7 +56,7 @@ const Home = () => {
                         <span>{name}</span>
                         <span>{job}</span>
                         <span>{transformDateIsoStringToBrazilianDate(admission_date)}</span>
-                        <span>{phone}</span>
+                        <span>{transformToPhoneFormat(phone)}</span>
                     </TableRow>))}
 
             </Table>
