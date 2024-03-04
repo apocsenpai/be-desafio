@@ -1,23 +1,13 @@
 import { transformDateIsoStringToBrazilianDate, transformToPhoneFormat } from "@/utils"
 import { ImageWrapper, Table, TableRow } from "./styled";
-import { IEmployeesResponseData } from "@/interfaces/employes";
-
-import employeesService from "@/services/employees";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { EmployeeContext } from "@/app/providers/Employee";
 
 const EmployeeTable = () => {
-    const [data, setData] = useState<IEmployeesResponseData[]>([]);
 
-    useEffect(() => {
-        async function getAllEmployees() {
-            setData((await employeesService.getAll()).data as IEmployeesResponseData[])
-        }
+    const { employees } = useContext(EmployeeContext);
 
-        getAllEmployees();
-    }, [])
-
-
-    return ( <Table>
+    return (<Table>
         <TableRow $header>
             <h2>FOTO</h2>
             <h2>NOME</h2>
@@ -25,7 +15,7 @@ const EmployeeTable = () => {
             <h2>DATA DE ADMISSÃO</h2>
             <h2>TELEFONE</h2>
         </TableRow>
-        {data.length !== 0 && (data.map(({ id, name, job, phone, image, admission_date }) =>
+        {employees.length !== 0 && (employees.map(({ id, name, job, phone, image, admission_date }) =>
             <TableRow key={id}>
                 <ImageWrapper $image={image} />
                 <span>{name}</span>
