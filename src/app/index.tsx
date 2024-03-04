@@ -1,4 +1,4 @@
-import Home from "@/components/pages/Home";
+import Home from "@/pages/Home";
 import Provider from "./providers";
 import { Navigate, Route, Routes } from "react-router-dom";
 
